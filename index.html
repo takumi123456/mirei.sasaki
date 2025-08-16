@@ -1,57 +1,143 @@
-/* プロフィールセクション用 */
-#profile {
-  font-size: 22px;
-  margin: 40px 0 20px;
-  padding-left: 14px;
-  border-left: 5px solid #e91e63; /* アクセントカラー */
-  color: #2d2d2d;
-}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>佐々木美玲（みーぱん）- 紹介＆タイムライン</title>
 
-/* グリッド配置 */
-.grid {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
-/* カードデザイン */
-.card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px 24px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  border: 1px solid rgba(233, 30, 99, 0.15); /* 薄いピンクの枠線 */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
+  <style>
+    :root{
+      --bg:#f9fafc; --card:#fff; --ink:#2d2d2d; --muted:#6b7280;
+      --brand:#e91e63; --brand-weak:#fde7ef; --ring:rgba(233,30,99,.25);
+      --shadow:0 8px 24px rgba(0,0,0,.08); --radius:14px; --line:#0001;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0c10; --card:#121317; --ink:#e7e9ee; --muted:#a3a9b6;
+        --brand:#ff5c93; --brand-weak:#2a0f19; --ring:rgba(255,92,147,.3);
+        --shadow:0 10px 30px rgba(0,0,0,.45); --line:#fff1;
+      }
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family:"M PLUS Rounded 1c","Noto Sans JP",system-ui,sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, #ffffff80, transparent), var(--bg);
+      margin:0; padding:24px; color:var(--ink); line-height:1.72;
+    }
+    .container{max-width:920px; margin:0 auto; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);}
+    header{padding:28px 28px 18px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+    .dot{width:10px; height:10px; border-radius:999px; background:var(--brand); box-shadow:0 0 0 6px var(--brand-weak);}
+    .title{font-size:clamp(22px,2vw+12px,30px); margin:0; font-weight:700; letter-spacing:1px;}
+    .subtitle{margin:0; color:var(--muted); font-size:15px; font-weight:500;}
+    nav{margin-left:auto; display:flex; gap:8px; flex-wrap:wrap}
+    .link-btn{display:inline-flex; align-items:center; gap:.4em; padding:.5em .8em; border-radius:10px; border:1px solid var(--brand); color:var(--brand); text-decoration:none; font-size:14px; font-weight:500;}
+    .link-btn:hover{box-shadow:0 0 0 6px var(--ring) inset;}
+    main{padding:24px;}
+    /* Hero */
+    .hero{display:grid; grid-template-columns:180px 1fr; gap:18px; padding:14px; border-radius:12px; background:linear-gradient(135deg, var(--brand-weak), transparent 60%); border:1px solid var(--line);}
+    .hero img{width:100%; height:180px; object-fit:cover; border-radius:12px; border:1px solid var(--line);}
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
+    .chip{padding:.25em .6em; border-radius:999px; font-size:12px; background:#00000008; border:1px solid var(--line);}
+    @media(max-width:720px){.hero{grid-template-columns:1fr}.hero img{height:220px}}
 
-/* カード内のタイトル */
-.card strong {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #e91e63; /* アクセントカラー */
-}
+    h2{font-size:22px; margin:40px 0 20px; padding-left:14px; border-left:5px solid var(--brand); color:var(--ink); font-weight:700;}
 
-/* 箇条書きスタイル */
-.card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.card li {
-  margin: 6px 0;
-  padding-left: 1.2em;
-  position: relative;
-  font-size: 15px;
-  color: #444;
-}
-.card li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #e91e63; /* ピンクの丸 */
-}
+    /* Cards */
+    .grid{display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+    .card{background:var(--card); border-radius:12px; padding:20px 24px; box-shadow:0 4px 15px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.15); transition:transform .2s, box-shadow .2s;}
+    .card:hover{transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,.15);}
+    .card strong{display:block; margin-bottom:10px; font-size:16px; color:var(--brand);}
+    .card ul{list-style:none; padding:0; margin:0;}
+    .card li{margin:6px 0; padding-left:1.2em; position:relative; font-size:15px; color:#444;}
+    .card li::before{content:"•"; position:absolute; left:0; color:var(--brand);}
+    @media(prefers-color-scheme:dark){.card li{color:#d9dbe2;}}
+
+    /* Timeline */
+    .timeline{position:relative; margin-left:6px;}
+    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:#00000015;}
+    .tl-item{position:relative; padding-left:24px; margin:10px 0 16px}
+    .tl-item::before{content:""; position:absolute; left:2px; top:.45em; width:12px; height:12px; border-radius:999px; background:var(--brand); box-shadow:0 0 0 6px var(--brand-weak);}
+    .muted{color:var(--muted); font-size:13px; font-weight:500;}
+
+    footer{padding:18px 24px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; text-align:center;}
+    .back{display:inline-block; margin-top:24px; text-decoration:none; color:#1a73e8; font-weight:500;}
+    .back:hover{text-decoration:underline}
+    .top-btn{position:fixed; right:14px; bottom:14px; z-index:10; padding:.6em .9em; border-radius:999px; border:1px solid #00000020; background:var(--card); box-shadow:var(--shadow); text-decoration:none; color:var(--ink); font-size:14px; font-weight:500;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="dot"></span>
+      <div>
+        <h1 class="title">佐々木美玲（ささき みれい）</h1>
+        <p class="subtitle">推しメン紹介（非公式ファンページ）</p>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero">
+        <img src="images/miipan_main.jpg" alt="佐々木美玲（みーぱん）">
+        <div>
+          <p>明るい笑顔と多才さで愛される「みーぱん」。ここでは基本プロフィールと歩みをまとめています。</p>
+          <div class="chips">
+            <span class="chip">笑顔</span><span class="chip">やさしさ</span><span class="chip">多才</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profile -->
+      <h2 id="profile">プロフィール</h2>
+      <div class="grid">
+        <div class="card">
+          <ul>
+            <li>名前：佐々木 美玲（ささき みれい）</li>
+            <li>ニックネーム：みーぱん</li>
+            <li>生年月日：1999年12月17日</li>
+            <li>出身地：兵庫県</li>
+            <li>血液型：O型</li>
+            <li>身長：164cm</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>主な肩書き・活動</strong>
+          <ul>
+            <li>元・日向坂46メンバー（2016年〜2025年）</li>
+            <li>『non-no』専属モデル（2019年〜）</li>
+            <li>ZIP!「キテルネ！」リポーター（2020年〜）</li>
+            <li>1st写真集『陽射しのパレード』（2024年12月発売）</li>
+            <li>2025年7月 クインビー所属を発表</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <h2 id="timeline">タイムライン</h2>
+      <div class="timeline">
+        <div class="tl-item"><div class="muted">2013</div><div>choco☆milQに所属（〜2015卒業）。</div></div>
+        <div class="tl-item"><div class="muted">2015-11</div><div>「次世代読モコンテスト」グランプリ。</div></div>
+        <div class="tl-item"><div class="muted">2016-05-08</div><div>けやき坂46オーディション合格。</div></div>
+        <div class="tl-item"><div class="muted">2019-02-11</div><div>けやき坂46→日向坂46に改名。</div></div>
+        <div class="tl-item"><div class="muted">2019-02-13</div><div>『non-no』専属モデル起用発表。</div></div>
+        <div class="tl-item"><div class="muted">2019-03-27</div><div>日向坂46 1st「キュン」選抜。</div></div>
+        <div class="tl-item"><div class="muted">2020-03-25</div><div>ZIP!「キテルネ！」リポーター就任。</div></div>
+        <div class="tl-item"><div class="muted">2024-12-17</div><div>1st写真集『陽射しのパレード』発売。</div></div>
+        <div class="tl-item"><div class="muted">2025-04-05〜06</div><div>『ひな誕祭』で卒業セレモニー。</div></div>
+        <div class="tl-item"><div class="muted">2025-07-01</div><div>クインビー所属を発表。</div></div>
+      </div>
+
+      <a class="back" href="index.html">← トップへ戻る</a>
+    </main>
+
+    <footer>
+      <p>※このページは有志による非公式ファンページです。記載の情報・画像等の権利は各権利者に帰属します。</p>
+    </footer>
+  </div>
+
+  <a href="#top" class="top-btn">▲ Top</a>
+</body>
+</html>
