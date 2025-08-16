@@ -1,23 +1,57 @@
-<h2 id="profile">プロフィール</h2>
-<div class="grid" role="region" aria-labelledby="profile">
-  <div class="card">
-    <ul>
-      <li>名前：佐々木 美玲（ささき みれい）</li>
-      <li>ニックネーム：みーぱん</li>
-      <li>生年月日：1999年12月17日</li>
-      <li>出身地：兵庫県</li>
-      <li>血液型：O型</li>
-      <li>身長：164cm</li>
-    </ul>
-  </div>
-  <div class="card">
-    <strong>主な肩書き・活動</strong>
-    <ul>
-      <li>元・日向坂46メンバー（2016年加入〜2025年卒業）</li>
-      <li>ファッション誌『non-no』専属モデル（2019年〜）</li>
-      <li>ZIP!「キテルネ！」リポーター（2020年〜）</li>
-      <li>1st写真集『陽射しのパレード』（2024年12月17日発売）</li>
-      <li>2025年7月より芸能事務所クインビー所属</li>
-    </ul>
-  </div>
-</div>
+/* プロフィールセクション用 */
+#profile {
+  font-size: 22px;
+  margin: 40px 0 20px;
+  padding-left: 14px;
+  border-left: 5px solid #e91e63; /* アクセントカラー */
+  color: #2d2d2d;
+}
+
+/* グリッド配置 */
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* カードデザイン */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border: 1px solid rgba(233, 30, 99, 0.15); /* 薄いピンクの枠線 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* カード内のタイトル */
+.card strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #e91e63; /* アクセントカラー */
+}
+
+/* 箇条書きスタイル */
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card li {
+  margin: 6px 0;
+  padding-left: 1.2em;
+  position: relative;
+  font-size: 15px;
+  color: #444;
+}
+.card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #e91e63; /* ピンクの丸 */
+}
