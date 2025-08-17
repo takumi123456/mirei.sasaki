@@ -237,4 +237,97 @@
   // role: C=センター, F=フロント, S=選抜, U=ユニット, P=参加
   const SONGS = [
     // 代表曲
-    { year: 2018, date: "2018-06-20", title: "期待していない自分", via: "けやき坂46 1stアルバム『走り出す瞬間』", role:
+    { year: 2018, date: "2018-06-20", title: "期待していない自分", via: "けやき坂46 1stアルバム『走り出す瞬間』", role: "C", notes: "初センター曲", link: "https://youtu.be/-97bU0sptZU" },
+    { year: 2020, date: "2020-09-23", title: "アザトカワイイ", via: "日向坂46 1stアルバム『ひなたざか』", role: "S", notes: "アルバムのリード曲", link: "https://www.youtube.com/watch?v=m-FRFhvM1EA&list=RDm-FRFhvM1EA&start_radio=1" },
+    { year: 2018, date: "2018-06-20", title: "わずかな光", via: "けやき坂46 1stアルバム『走り出す瞬間』（Type-A）", role: "U", notes: "佐々木美玲ソロ", link: "" },
+
+    // 主要シングル参加（サンプル）
+    { year: 2019, date: "2019-03-27", title: "キュン", via: "日向坂46 1st シングル", role: "S", notes: "デビューシングル選抜", link: "" },
+    { year: 2019, date: "2019-07-17", title: "ドレミソラシド", via: "日向坂46 2nd シングル", role: "P", notes: "参加", link: "" },
+    { year: 2020, date: "2020-02-19", title: "ソンナコトナイヨ", via: "日向坂46 4th シングル", role: "P", notes: "参加", link: "" }
+  ];
+
+  const FEATURED_SONGS = [
+    { year: 2018, date: "2018-06-20", title: "期待していない自分", via: "けやき坂46 1stアルバム『走り出す瞬間』", role: "C", notes: "初センター曲。みーぱんを象徴する代表曲", link: "https://youtu.be/-97bU0sptZU" },
+    { year: 2020, date: "2020-09-23", title: "アザトカワイイ", via: "日向坂46 1stアルバム『ひなたざか』", role: "S", notes: "アルバムのリード曲（MV有）", link: "https://www.youtube.com/watch?v=m-FRFhvM1EA&list=RDm-FRFhvM1EA&start_radio=1" },
+    { year: 2018, date: "2018-06-20", title: "わずかな光", via: "『走り出す瞬間』（Type-A）", role: "U", notes: "佐々木美玲ソロ", link: "" }
+  ];
+
+  const ROLE_BADGE = { C:"センター", F:"フロント", S:"選抜", U:"ユニット", P:"参加" };
+
+  function renderFeatured(){
+    const wrap = document.getElementById("featuredWrap");
+    if(!wrap) return;
+    wrap.innerHTML = FEATURED_SONGS
+      .slice()
+      .sort((a,b)=>a.date.localeCompare(b.date)) // 古→新
+      .map(s => {
+        const badge = ROLE_BADGE[s.role] ? `<span class="badge featured-chip">${s.role}</span>` : "";
+        const link = s.link ? `　<a class="featured-link" href="${s.link}" target="_blank" rel="noopener">公式リンク</a>` : "";
+        return `
+          <article class="featured-card card" aria-label="${s.title}">
+            <div style="flex:1">
+              <h3 class="featured-title">${s.title}${badge}</h3>
+              <p class="featured-meta">${s.date} ・ ${s.via}</p>
+              <p class="featured-notes">${s.notes}${link}</p>
+            </div>
+          </article>
+        `;
+      })
+      .join("");
+  }
+
+  function populateYearFilter(){
+    const select = document.getElementById("yearFilter");
+    const years = Array.from(new Set(SONGS.map(s=>s.year))).sort((a,b)=>b-a);
+    years.forEach(y=>{
+      const opt = document.createElement("option");
+      opt.value = String(y);
+      opt.textContent = `${y}年`;
+      select.appendChild(opt);
+    });
+  }
+
+  function renderDiscography(){
+    const tbody = document.getElementById("discBody");
+    const q = (document.getElementById("discSearch").value || "").trim().toLowerCase();
+    const y = (document.getElementById("yearFilter").value || "").trim();
+    const r = (document.getElementById("roleFilter").value || "").trim();
+
+    const rows = SONGS
+      .filter(s => !y || String(s.year) === y)
+      .filter(s => !r || s.role === r)
+      .filter(s => {
+        if(!q) return true;
+        const hay = `${s.title} ${s.via} ${s.notes}`.toLowerCase();
+        return hay.includes(q);
+      })
+      .slice()
+      .sort((a,b)=> b.date.localeCompare(a.date)) // 新→古
+      .map(s => {
+        const link = s.link ? `<a class="disc-link" href="${s.link}" target="_blank" rel="noopener">公式リンク</a>` : "";
+        return `
+          <tr>
+            <td>${s.date}</td>
+            <td><strong>${s.title}</strong><br><span class="small">${s.via}</span></td>
+            <td><span class="badge">${s.role}</span> ${ROLE_BADGE[s.role]||""}</td>
+            <td>${s.notes || ""}${link ? "<br>"+link : ""}</td>
+          </tr>
+        `;
+      })
+      .join("");
+
+    tbody.innerHTML = rows || `<tr><td colspan="4" class="small">該当する楽曲がありません。</td></tr>`;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderFeatured();
+    populateYearFilter();
+    renderDiscography();
+    document.getElementById("discSearch").addEventListener("input", renderDiscography);
+    document.getElementById("yearFilter").addEventListener("change", renderDiscography);
+    document.getElementById("roleFilter").addEventListener("change", renderDiscography);
+  });
+  </script>
+</body>
+</html>
