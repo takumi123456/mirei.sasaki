@@ -5,49 +5,97 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>佐々木美玲（みーぱん）- 紹介・楽曲・タイムライン</title>
 
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="佐々木美玲（みーぱん）- 紹介・楽曲・タイムライン">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://example.com/og/miipan_og.jpg">
+  <meta property="og:description" content="みーぱんのプロフィール・代表曲・楽曲データ・歩みをまとめた非公式ファンページ。">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
   <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg:#f9fafc; --card:#fff; --ink:#2d2d2d; --muted:#6b7280;
-      --brand:#e91e63; --brand-weak:#fde7ef; --ring:rgba(233,30,99,.25);
+      --brand:#e91e63; --brand-2:#fca5b2; /* 明るめ補色 */
+      --brand-weak:#fde7ef; --ring: color-mix(in oklab, var(--brand) 35%, transparent);
       --shadow:0 8px 24px rgba(0,0,0,.08); --radius:14px; --line:#0001;
     }
     @media (prefers-color-scheme: dark){
       :root{
         --bg:#0b0c10; --card:#121317; --ink:#e7e9ee; --muted:#a3a9b6;
-        --brand:#ff5c93; --brand-weak:#2a0f19; --ring:rgba(255,92,147,.3);
+        --brand:#ff5c93; --brand-2:#ffb3c7; --brand-weak:#2a0f19; --ring:rgba(255,92,147,.25);
         --shadow:0 10px 30px rgba(0,0,0,.45); --line:#fff1;
       }
     }
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       font-family:"M PLUS Rounded 1c","Noto Sans JP",system-ui,sans-serif;
-      background: radial-gradient(1200px 600px at 10% -10%, #ffffff80, transparent), var(--bg);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #ffffff80, transparent),
+        var(--bg);
       margin:0; padding:24px; color:var(--ink); line-height:1.72;
+      text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased;
     }
     .container{max-width:920px; margin:0 auto; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);}
-    header{padding:28px 28px 18px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+    header{
+      padding:28px 28px 18px; border-bottom:1px solid var(--line);
+      display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    }
+    /* ① ブランド色の深み＋ヘッダーに光 */
+    .header-glow{
+      background:
+        radial-gradient(60% 120% at 0% -10%, color-mix(in oklab, var(--brand) 10%, transparent), transparent),
+        linear-gradient(180deg, #fff, transparent 60%);
+    }
     .dot{width:10px; height:10px; border-radius:999px; background:var(--brand); box-shadow:0 0 0 6px var(--brand-weak);}
     .title{font-size:clamp(22px,2vw+12px,30px); margin:0; font-weight:700; letter-spacing:1px;}
     .subtitle{margin:0; color:var(--muted); font-size:15px; font-weight:500;}
-    nav{margin-left:auto; display:flex; gap:8px; flex-wrap:wrap}
-    .link-btn{display:inline-flex; align-items:center; gap:.4em; padding:.5em .8em; border-radius:10px; border:1px solid var(--brand); color:var(--brand); text-decoration:none; font-size:14px; font-weight:500;}
+    nav[aria-label="外部リンク"]{margin-left:auto; display:flex; gap:8px; flex-wrap:wrap}
+    .link-btn{
+      display:inline-flex; align-items:center; gap:.4em; padding:.5em .8em; border-radius:10px;
+      border:1px solid var(--brand); color:var(--brand); text-decoration:none; font-size:14px; font-weight:500;
+      background: linear-gradient(180deg,#fff, #fff0);
+    }
     .link-btn:hover{box-shadow:0 0 0 6px var(--ring) inset;}
-    main{padding:24px;}
+    main{padding:24px; max-width:70ch; margin-inline:auto;}
+    @media(min-width:980px){ main{max-width:820px;}}
+
     /* Hero */
-    .hero{display:grid; grid-template-columns:180px 1fr; gap:18px; padding:14px; border-radius:12px; background:linear-gradient(135deg, var(--brand-weak), transparent 60%); border:1px solid var(--line);}
+    .hero{
+      display:grid; grid-template-columns:180px 1fr; gap:18px; padding:14px; border-radius:12px;
+      background:linear-gradient(135deg, var(--brand-weak), transparent 60%); border:1px solid var(--line);
+    }
     .hero img{width:100%; height:180px; object-fit:cover; border-radius:12px; border:1px solid var(--line);}
     .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
-    .chip{padding:.25em .6em; border-radius:999px; font-size:12px; background:#00000008; border:1px solid var(--line);}
+    /* ③ ガラス風チップ */
+    .chip{
+      padding:.25em .6em; border-radius:999px; font-size:12px;
+      backdrop-filter: blur(6px);
+      background: color-mix(in oklab, var(--brand-weak) 40%, transparent);
+      border: 1px solid color-mix(in oklab, var(--brand) 25%, transparent);
+    }
     @media(max-width:720px){.hero{grid-template-columns:1fr}.hero img{height:220px}}
 
-    h2{font-size:22px; margin:40px 0 20px; padding-left:14px; border-left:5px solid var(--brand); color:var(--ink); font-weight:700;}
+    /* Section Title + ④細い区切り */
+    h2{font-size:22px; margin:40px 0 20px; padding-left:14px; border-left:5px solid var(--brand); color:var(--ink); font-weight:700; position:relative; isolation:isolate;}
+    h2::after{
+      content:""; position:absolute; inset:auto 0 -8px 14px; height:1px;
+      background: linear-gradient(90deg, var(--brand), transparent);
+      opacity:.35;
+    }
 
     /* Cards */
     .grid{display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
-    .card{background:var(--card); border-radius:12px; padding:20px 24px; box-shadow:0 4px 15px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.15); transition:transform .2s, box-shadow .2s;}
+    .card{
+      background:var(--card); border-radius:12px; padding:20px 24px;
+      box-shadow: 0 6px 22px color-mix(in oklab, black 8%, transparent);
+      border:1px solid rgba(233,30,99,.15); transition:transform .2s, box-shadow .2s;
+    }
     .card:hover{transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,.15);}
     .card strong{display:block; margin-bottom:10px; font-size:16px; color:var(--brand);}
     .card ul{list-style:none; padding:0; margin:0;}
@@ -55,12 +103,26 @@
     .card li::before{content:"•"; position:absolute; left:0; color:var(--brand);}
     @media(prefers-color-scheme:dark){.card li{color:#d9dbe2;}}
 
-    /* Timeline */
-    .timeline{position:relative; margin-left:6px;}
-    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:#00000015;}
-    .tl-item{position:relative; padding-left:24px; margin:10px 0 16px}
-    .tl-item::before{content:""; position:absolute; left:2px; top:.45em; width:12px; height:12px; border-radius:999px; background:var(--brand); box-shadow:0 0 0 6px var(--brand-weak);}
-    .muted{color:var(--muted); font-size:13px; font-weight:500;}
+    /* ⑤ スクロールreveal */
+    .reveal{ opacity:0; transform: translateY(8px); transition: .5s ease; }
+    .reveal.show{ opacity:1; transform:none; }
+    @media (prefers-reduced-motion: reduce){
+      .reveal{ opacity:1; transform:none; transition:none; }
+    }
+
+    /* ⑥ サブナビ + ScrollSpy */
+    .subnav{
+      position:sticky; top:12px; z-index:5; display:flex; gap:8px; flex-wrap:wrap;
+      padding:8px; margin:10px 0 28px;
+      border:1px solid var(--line); border-radius:12px; background:var(--card);
+      box-shadow:0 4px 14px rgba(0,0,0,.05);
+    }
+    .subnav a{ padding:.45em .7em; border-radius:10px; text-decoration:none; color:var(--ink); border:1px solid transparent; }
+    .subnav a:hover{ border-color:var(--line); }
+    .subnav a[aria-current="true"]{
+      background: color-mix(in oklab, var(--brand-weak) 55%, transparent); color:var(--brand);
+      border-color: color-mix(in oklab, var(--brand) 25%, transparent);
+    }
 
     footer{padding:18px 24px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; text-align:center;}
     .back{display:inline-block; margin-top:24px; text-decoration:none; color:#1a73e8; font-weight:500;}
@@ -70,10 +132,13 @@
     /* ── Discography（楽曲リスト） ───────────────── */
     #discography h2 { margin-top: 48px; }
     .disc-controls{
-      display:grid; gap:10px; grid-template-columns: 1fr 140px 140px;
+      display:grid; gap:10px; grid-template-columns: minmax(160px,1fr) 140px 140px; /* ⑧ 崩れ対策 */
       margin: 12px 0 16px;
     }
-    @media(max-width:680px){ .disc-controls{ grid-template-columns: 1fr 1fr; } }
+    @media(max-width:720px){
+      .disc-controls{ grid-template-columns: 1fr 1fr; }
+      #discSearch{ grid-column: 1 / -1; }
+    }
     .disc-input, .disc-select{
       width: 100%; padding:.6em .8em; border-radius:10px; border:1px solid var(--line);
       background: var(--card); color: var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,.04);
@@ -92,15 +157,27 @@
       display:inline-block; padding:.15em .55em; border-radius:999px; font-size:12px; margin-right:.25rem;
       border:1px solid rgba(233,30,99,.25); color: var(--brand); background: var(--brand-weak);
     }
-    .small{ font-size:12px; color: var(--muted); }
-    a.disc-link{ color:#1a73e8; text-decoration:none; }
-    a.disc-link:hover{ text-decoration:underline }
+    /* ⑨ ロール色分け */
+    .badge[data-role="C"]{ background:#fff5; border-color: color-mix(in oklab, var(--brand) 60%, transparent); }
+    .badge[data-role="U"]{ background:#eef7ff; border-color:#93c5fd; color:#2563eb; }
+    .badge[data-role="F"]{ background:#fef3c7; border-color:#f59e0b; color:#92400e; }
 
-    /* Featured (代表曲) */
+    .small{ font-size:12px; color: var(--muted); }
+    a.disc-link, .featured-link{ color:#1a73e8; text-decoration:none; position:relative; }
+    /* ② アニメ付きアンダーライン */
+    .featured-link::after, a.disc-link::after{
+      content:""; position:absolute; left:0; bottom:-2px; height:2px; width:0;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      transition: width .25s ease;
+    }
+    .featured-link:hover::after, a.disc-link:hover::after{ width:100%; }
+
+    /* Featured (代表曲) + ⑦ カバー画像 */
     .featured-card{
-      display:flex; gap:14px; align-items:flex-start;
+      display:flex; gap:14px; align-items:stretch;
       border:1px solid var(--line); border-radius:12px; padding:16px 18px;
       background:linear-gradient(180deg, #fff, #fff0);
+      overflow:hidden;
     }
     @media(prefers-color-scheme:dark){
       .featured-card{ background:linear-gradient(180deg, #15161b, #15161b00); }
@@ -109,13 +186,29 @@
     .featured-title{ font-weight:700; font-size:16px; margin:0 0 4px }
     .featured-meta{ margin:0; font-size:14px; color:var(--muted) }
     .featured-notes{ margin:6px 0 0; font-size:14px }
-    .featured-link{ color:#1a73e8; font-size:14px; text-decoration:none }
-    .featured-link:hover{ text-decoration:underline }
+    .cover{
+      aspect-ratio: 1.6 / 1; border-radius:10px; overflow:hidden; border:1px solid var(--line);
+      background: linear-gradient(135deg, var(--brand-weak), #0000); width:42%;
+      min-width:220px; align-self:stretch;
+    }
+    .cover img{ width:100%; height:100%; object-fit:cover; display:block; }
+    @media(max-width:720px){ .cover{ width:100%; min-width:0; } .featured-card{ flex-direction:column; } }
+
+    /* Timeline ⑩ ドットに淡いステップ */
+    .timeline{position:relative; margin-left:6px;}
+    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:#00000015;}
+    .tl-item{position:relative; padding-left:24px; margin:10px 0 16px}
+    .tl-item::before{
+      content:""; position:absolute; left:2px; top:.45em; width:12px; height:12px; border-radius:999px;
+      background: conic-gradient(from 0turn, var(--brand), var(--brand-2));
+      box-shadow:0 0 0 6px var(--brand-weak);
+    }
+    .muted{color:var(--muted); font-size:13px; font-weight:500;}
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
+    <header class="header-glow">
       <span class="dot"></span>
       <div>
         <h1 class="title">佐々木美玲（ささき みれい）</h1>
@@ -131,9 +224,17 @@
     </header>
 
     <main id="top">
+      <!-- サブナビ（⑥） -->
+      <nav class="subnav" id="subnav">
+        <a href="#profile">プロフィール</a>
+        <a href="#featured">代表曲</a>
+        <a href="#discography">楽曲リスト</a>
+        <a href="#timeline">タイムライン</a>
+      </nav>
+
       <!-- Hero -->
-      <section class="hero">
-        <img src="みーぱん.jpg" alt="佐々木美玲（みーぱん）">
+      <section class="hero reveal">
+        <img src="images/miipan_main.jpg" alt="佐々木美玲（みーぱん）" width="720" height="720" loading="lazy" decoding="async">
         <div>
           <p>明るい笑顔と多才さで愛される「みーぱん」。ここでは基本プロフィール・代表曲・楽曲リスト・歩みをまとめています。</p>
           <div class="chips">
@@ -145,7 +246,7 @@
       <!-- Profile -->
       <h2 id="profile">プロフィール</h2>
       <div class="grid">
-        <div class="card">
+        <div class="card reveal">
           <ul>
             <li>名前：佐々木 美玲（ささき みれい）</li>
             <li>ニックネーム：みーぱん</li>
@@ -155,7 +256,7 @@
             <li>身長：164cm</li>
           </ul>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <strong>主な肩書き・活動</strong>
           <ul>
             <li>元・日向坂46メンバー（2016年〜2025年）</li>
@@ -210,16 +311,16 @@
       <!-- Timeline -->
       <h2 id="timeline">タイムライン</h2>
       <div class="timeline">
-        <div class="tl-item"><div class="muted">2013</div><div>choco☆milQに所属（〜2015卒業）。</div></div>
-        <div class="tl-item"><div class="muted">2015-11</div><div>「次世代読モコンテスト」グランプリ。</div></div>
-        <div class="tl-item"><div class="muted">2016-05-08</div><div>けやき坂46オーディション合格。</div></div>
-        <div class="tl-item"><div class="muted">2019-02-11</div><div>けやき坂46→日向坂46に改名。</div></div>
-        <div class="tl-item"><div class="muted">2019-02-13</div><div>『non-no』専属モデル起用発表。</div></div>
-        <div class="tl-item"><div class="muted">2019-03-27</div><div>日向坂46 1st「キュン」選抜。</div></div>
-        <div class="tl-item"><div class="muted">2020-03-25</div><div>ZIP!「キテルネ！」リポーター就任。</div></div>
-        <div class="tl-item"><div class="muted">2024-12-17</div><div>1st写真集『陽射しのパレード』発売。</div></div>
-        <div class="tl-item"><div class="muted">2025-04-05〜06</div><div>『ひな誕祭』で卒業セレモニー。</div></div>
-        <div class="tl-item"><div class="muted">2025-07-01</div><div>クインビー所属を発表。</div></div>
+        <div class="tl-item reveal"><div class="muted">2013</div><div>choco☆milQに所属（〜2015卒業）。</div></div>
+        <div class="tl-item reveal"><div class="muted">2015-11</div><div>「次世代読モコンテスト」グランプリ。</div></div>
+        <div class="tl-item reveal"><div class="muted">2016-05-08</div><div>けやき坂46オーディション合格。</div></div>
+        <div class="tl-item reveal"><div class="muted">2019-02-11</div><div>けやき坂46→日向坂46に改名。</div></div>
+        <div class="tl-item reveal"><div class="muted">2019-02-13</div><div>『non-no』専属モデル起用発表。</div></div>
+        <div class="tl-item reveal"><div class="muted">2019-03-27</div><div>日向坂46 1st「キュン」選抜。</div></div>
+        <div class="tl-item reveal"><div class="muted">2020-03-25</div><div>ZIP!「キテルネ！」リポーター就任。</div></div>
+        <div class="tl-item reveal"><div class="muted">2024-12-17</div><div>1st写真集『陽射しのパレード』発売。</div></div>
+        <div class="tl-item reveal"><div class="muted">2025-04-05〜06</div><div>『ひな誕祭』で卒業セレモニー。</div></div>
+        <div class="tl-item reveal"><div class="muted">2025-07-01</div><div>クインビー所属を発表。</div></div>
       </div>
 
       <a class="back" href="index.html">← トップへ戻る</a>
@@ -232,13 +333,15 @@
 
   <a href="#top" class="top-btn">▲ Top</a>
 
-  <!-- ===== ディスコグラフィ用スクリプト ===== -->
+  <!-- ===== スクリプト ===== -->
   <script>
+  // ====== データ ======
   // role: C=センター, F=フロント, S=選抜, U=ユニット, P=参加
+  // 代表曲3曲＋主要曲の例（必要に応じて追加・修正OK）
   const SONGS = [
     // 代表曲
     { year: 2018, date: "2018-06-20", title: "期待していない自分", via: "けやき坂46 1stアルバム『走り出す瞬間』", role: "C", notes: "初センター曲", link: "https://youtu.be/-97bU0sptZU" },
-    { year: 2020, date: "2020-09-23", title: "アザトカワイイ", via: "日向坂46 1stアルバム『ひなたざか』", role: "S", notes: "アルバムのリード曲", link: "https://www.youtube.com/watch?v=m-FRFhvM1EA&list=RDm-FRFhvM1EA&start_radio=1" },
+    { year: 2020, date: "2020-09-23", title: "アザトカワイイ", via: "日向坂46 1stアルバム『ひなたざか』", role: "S", notes: "アルバムのリード曲", link: "" },
     { year: 2018, date: "2018-06-20", title: "わずかな光", via: "けやき坂46 1stアルバム『走り出す瞬間』（Type-A）", role: "U", notes: "佐々木美玲ソロ", link: "" },
 
     // 主要シングル参加（サンプル）
@@ -248,24 +351,47 @@
   ];
 
   const FEATURED_SONGS = [
-    { year: 2018, date: "2018-06-20", title: "期待していない自分", via: "けやき坂46 1stアルバム『走り出す瞬間』", role: "C", notes: "初センター曲。みーぱんを象徴する代表曲", link: "https://youtu.be/-97bU0sptZU" },
-    { year: 2020, date: "2020-09-23", title: "アザトカワイイ", via: "日向坂46 1stアルバム『ひなたざか』", role: "S", notes: "アルバムのリード曲（MV有）", link: "https://www.youtube.com/watch?v=m-FRFhvM1EA&list=RDm-FRFhvM1EA&start_radio=1" },
-    { year: 2018, date: "2018-06-20", title: "わずかな光", via: "『走り出す瞬間』（Type-A）", role: "U", notes: "佐々木美玲ソロ", link: "" }
+    {
+      year: 2018, date: "2018-06-20", title: "期待していない自分",
+      via: "けやき坂46 1stアルバム『走り出す瞬間』", role: "C",
+      notes: "初センター曲。みーぱんを象徴する代表曲",
+      link: "https://youtu.be/-97bU0sptZU",
+      cover: "images/featured_kitaijibun.jpg"
+    },
+    {
+      year: 2020, date: "2020-09-23", title: "アザトカワイイ",
+      via: "日向坂46 1stアルバム『ひなたざか』", role: "S",
+      notes: "グループを代表するヒット曲。MV/パフォーマンスで存在感",
+      link: "",
+      cover: "images/featured_azatokawaii.jpg"
+    },
+    {
+      year: 2018, date: "2018-06-20", title: "わずかな光",
+      via: "『走り出す瞬間』（Type-A）", role: "U",
+      notes: "佐々木美玲ソロ",
+      link: "",
+      cover: "images/featured_wazukanahikari.jpg"
+    }
   ];
 
   const ROLE_BADGE = { C:"センター", F:"フロント", S:"選抜", U:"ユニット", P:"参加" };
 
+  // ====== UI生成 ======
   function renderFeatured(){
     const wrap = document.getElementById("featuredWrap");
     if(!wrap) return;
     wrap.innerHTML = FEATURED_SONGS
-      .slice()
-      .sort((a,b)=>a.date.localeCompare(b.date)) // 古→新
+      .slice().sort((a,b)=>a.date.localeCompare(b.date)) // 古→新
       .map(s => {
-        const badge = ROLE_BADGE[s.role] ? `<span class="badge featured-chip">${s.role}</span>` : "";
+        const badge = ROLE_BADGE[s.role] ? `<span class="badge featured-chip" data-role="${s.role}">${s.role}</span>` : "";
         const link = s.link ? `　<a class="featured-link" href="${s.link}" target="_blank" rel="noopener">公式リンク</a>` : "";
+        const cover = s.cover ? `
+          <figure class="cover">
+            <img src="${s.cover}" alt="${s.title} ジャケット" width="800" height="500" loading="lazy" decoding="async">
+          </figure>` : "";
         return `
-          <article class="featured-card card" aria-label="${s.title}">
+          <article class="featured-card card reveal" aria-label="${s.title}">
+            ${cover}
             <div style="flex:1">
               <h3 class="featured-title">${s.title}${badge}</h3>
               <p class="featured-meta">${s.date} ・ ${s.via}</p>
@@ -307,10 +433,10 @@
       .map(s => {
         const link = s.link ? `<a class="disc-link" href="${s.link}" target="_blank" rel="noopener">公式リンク</a>` : "";
         return `
-          <tr>
+          <tr class="reveal">
             <td>${s.date}</td>
             <td><strong>${s.title}</strong><br><span class="small">${s.via}</span></td>
-            <td><span class="badge">${s.role}</span> ${ROLE_BADGE[s.role]||""}</td>
+            <td><span class="badge" data-role="${s.role}">${s.role}</span> ${ROLE_BADGE[s.role]||""}</td>
             <td>${s.notes || ""}${link ? "<br>"+link : ""}</td>
           </tr>
         `;
@@ -320,10 +446,47 @@
     tbody.innerHTML = rows || `<tr><td colspan="4" class="small">該当する楽曲がありません。</td></tr>`;
   }
 
+  // ⑤ reveal on scroll
+  function setupReveal(){
+    const io=new IntersectionObserver(es=>{
+      es.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('show');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:.15});
+    document.querySelectorAll('.card,.featured-card,.tl-item,.reveal, tbody tr.reveal').forEach(el=>{
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+  }
+
+  // ⑥ ScrollSpy
+  function setupScrollSpy(){
+    const sections=[...document.querySelectorAll('#profile,#featured,#discography,#timeline')];
+    const links=[...document.querySelectorAll('#subnav a')];
+    const spy=new IntersectionObserver(es=>{
+      es.forEach(e=>{
+        if(e.isIntersecting){
+          links.forEach(a=>a.removeAttribute('aria-current'));
+          const id='#'+e.target.id;
+          const hit=links.find(a=>a.getAttribute('href')===id);
+          if(hit) hit.setAttribute('aria-current','true');
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px', threshold:.01});
+    sections.forEach(s=>spy.observe(s));
+  }
+
+  // 初期化
   document.addEventListener("DOMContentLoaded", () => {
     renderFeatured();
     populateYearFilter();
     renderDiscography();
+    setupReveal();
+    setupScrollSpy();
+
     document.getElementById("discSearch").addEventListener("input", renderDiscography);
     document.getElementById("yearFilter").addEventListener("change", renderDiscography);
     document.getElementById("roleFilter").addEventListener("change", renderDiscography);
