@@ -46,7 +46,7 @@
       padding:28px 28px 18px; border-bottom:1px solid var(--line);
       display:flex; align-items:center; gap:12px; flex-wrap:wrap;
     }
-    /* ① ブランド色の深み＋ヘッダーに光 */
+    /* ヘッダー光 */
     .header-glow{
       background:
         radial-gradient(60% 120% at 0% -10%, color-mix(in oklab, var(--brand) 10%, transparent), transparent),
@@ -55,13 +55,26 @@
     .dot{width:10px; height:10px; border-radius:999px; background:var(--brand); box-shadow:0 0 0 6px var(--brand-weak);}
     .title{font-size:clamp(22px,2vw+12px,30px); margin:0; font-weight:700; letter-spacing:1px;}
     .subtitle{margin:0; color:var(--muted); font-size:15px; font-weight:500;}
-    nav[aria-label="外部リンク"]{margin-left:auto; display:flex; gap:8px; flex-wrap:wrap}
+    nav[aria-label="外部リンク"]{margin-left:auto; display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+
+    /* Instagram アイコン */
+    .sns-icon{
+      width:28px; height:28px; display:block; border-radius:6px; 
+      transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 0 0 0 rgba(0,0,0,0);
+    }
+    .sns-icon:hover{ transform: scale(1.08); box-shadow:0 2px 10px rgba(0,0,0,.12); }
+    .sns-link{ display:inline-flex; align-items:center; justify-content:center; padding:6px; border-radius:10px; border:1px solid var(--line); background:linear-gradient(180deg,#fff,#fff0); }
+    .sns-link:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
+
+    /* 外部リンクボタン（ファンクラブ） */
     .link-btn{
       display:inline-flex; align-items:center; gap:.4em; padding:.5em .8em; border-radius:10px;
       border:1px solid var(--brand); color:var(--brand); text-decoration:none; font-size:14px; font-weight:500;
       background: linear-gradient(180deg,#fff, #fff0);
     }
     .link-btn:hover{box-shadow:0 0 0 6px var(--ring) inset;}
+
     main{padding:24px; max-width:70ch; margin-inline:auto;}
     @media(min-width:980px){ main{max-width:820px;}}
 
@@ -72,7 +85,6 @@
     }
     .hero img{width:100%; height:180px; object-fit:cover; border-radius:12px; border:1px solid var(--line);}
     .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
-    /* ③ ガラス風チップ */
     .chip{
       padding:.25em .6em; border-radius:999px; font-size:12px;
       backdrop-filter: blur(6px);
@@ -81,7 +93,7 @@
     }
     @media(max-width:720px){.hero{grid-template-columns:1fr}.hero img{height:220px}}
 
-    /* Section Title + ④細い区切り */
+    /* Section Title + 区切り線 */
     h2{font-size:22px; margin:40px 0 20px; padding-left:14px; border-left:5px solid var(--brand); color:var(--ink); font-weight:700; position:relative; isolation:isolate;}
     h2::after{
       content:""; position:absolute; inset:auto 0 -8px 14px; height:1px;
@@ -103,14 +115,14 @@
     .card li::before{content:"•"; position:absolute; left:0; color:var(--brand);}
     @media(prefers-color-scheme:dark){.card li{color:#d9dbe2;}}
 
-    /* ⑤ スクロールreveal */
+    /* scroll reveal */
     .reveal{ opacity:0; transform: translateY(8px); transition: .5s ease; }
     .reveal.show{ opacity:1; transform:none; }
     @media (prefers-reduced-motion: reduce){
       .reveal{ opacity:1; transform:none; transition:none; }
     }
 
-    /* ⑥ サブナビ + ScrollSpy */
+    /* サブナビ + ScrollSpy */
     .subnav{
       position:sticky; top:12px; z-index:5; display:flex; gap:8px; flex-wrap:wrap;
       padding:8px; margin:10px 0 28px;
@@ -132,7 +144,7 @@
     /* ── Discography（楽曲リスト） ───────────────── */
     #discography h2 { margin-top: 48px; }
     .disc-controls{
-      display:grid; gap:10px; grid-template-columns: minmax(160px,1fr) 140px 140px; /* ⑧ 崩れ対策 */
+      display:grid; gap:10px; grid-template-columns: minmax(160px,1fr) 140px 140px;
       margin: 12px 0 16px;
     }
     @media(max-width:720px){
@@ -157,14 +169,12 @@
       display:inline-block; padding:.15em .55em; border-radius:999px; font-size:12px; margin-right:.25rem;
       border:1px solid rgba(233,30,99,.25); color: var(--brand); background: var(--brand-weak);
     }
-    /* ⑨ ロール色分け */
     .badge[data-role="C"]{ background:#fff5; border-color: color-mix(in oklab, var(--brand) 60%, transparent); }
     .badge[data-role="U"]{ background:#eef7ff; border-color:#93c5fd; color:#2563eb; }
     .badge[data-role="F"]{ background:#fef3c7; border-color:#f59e0b; color:#92400e; }
 
     .small{ font-size:12px; color: var(--muted); }
     a.disc-link, .featured-link{ color:#1a73e8; text-decoration:none; position:relative; }
-    /* ② アニメ付きアンダーライン */
     .featured-link::after, a.disc-link::after{
       content:""; position:absolute; left:0; bottom:-2px; height:2px; width:0;
       background: linear-gradient(90deg, var(--brand), var(--brand-2));
@@ -172,7 +182,7 @@
     }
     .featured-link:hover::after, a.disc-link:hover::after{ width:100%; }
 
-    /* Featured (代表曲) + ⑦ カバー画像 */
+    /* Featured (代表曲) + カバー画像 */
     .featured-card{
       display:flex; gap:14px; align-items:stretch;
       border:1px solid var(--line); border-radius:12px; padding:16px 18px;
@@ -194,7 +204,7 @@
     .cover img{ width:100%; height:100%; object-fit:cover; display:block; }
     @media(max-width:720px){ .cover{ width:100%; min-width:0; } .featured-card{ flex-direction:column; } }
 
-    /* Timeline ⑩ ドットに淡いステップ */
+    /* Timeline */
     .timeline{position:relative; margin-left:6px;}
     .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:#00000015;}
     .tl-item{position:relative; padding-left:24px; margin:10px 0 16px}
@@ -214,17 +224,18 @@
         <h1 class="title">佐々木美玲（ささき みれい）</h1>
         <p class="subtitle">推しメン紹介（非公式ファンページ）</p>
       </div>
+
+      <!-- ヘッダー右上：Instagramアイコン + ファンクラブ -->
       <nav aria-label="外部リンク">
-        <a class="link-btn" href="#featured">代表曲</a>
-        <a class="link-btn" href="#discography">楽曲リスト</a>
-        <a class="link-btn" href="#timeline">タイムライン</a>
-        <a class="link-btn" href="https://www.instagram.com/mireisasaki_official/?hl=ja" target="_blank" rel="noopener">Instagram</a>
+        <a class="sns-link" href="https://www.instagram.com/mireisasaki_official/?hl=ja" target="_blank" rel="noopener" aria-label="Instagram（別タブで開く）">
+          <img src="images/instagram.png" alt="Instagram" class="sns-icon" width="28" height="28" loading="lazy" decoding="async">
+        </a>
         <a class="link-btn" href="https://mireisasaki.officialfc.jp/" target="_blank" rel="noopener">ファンクラブ</a>
       </nav>
     </header>
 
     <main id="top">
-      <!-- サブナビ（⑥） -->
+      <!-- サブナビ（ページ内移動は残します） -->
       <nav class="subnav" id="subnav">
         <a href="#profile">プロフィール</a>
         <a href="#featured">代表曲</a>
@@ -337,7 +348,6 @@
   <script>
   // ====== データ ======
   // role: C=センター, F=フロント, S=選抜, U=ユニット, P=参加
-  // 代表曲3曲＋主要曲の例（必要に応じて追加・修正OK）
   const SONGS = [
     // 代表曲
     { year: 2018, date: "2018-06-20", title: "期待していない自分", via: "けやき坂46 1stアルバム『走り出す瞬間』", role: "C", notes: "初センター曲", link: "https://youtu.be/-97bU0sptZU" },
@@ -446,7 +456,7 @@
     tbody.innerHTML = rows || `<tr><td colspan="4" class="small">該当する楽曲がありません。</td></tr>`;
   }
 
-  // ⑤ reveal on scroll
+  // scroll reveal
   function setupReveal(){
     const io=new IntersectionObserver(es=>{
       es.forEach(e=>{
@@ -462,7 +472,7 @@
     });
   }
 
-  // ⑥ ScrollSpy
+  // ScrollSpy
   function setupScrollSpy(){
     const sections=[...document.querySelectorAll('#profile,#featured,#discography,#timeline')];
     const links=[...document.querySelectorAll('#subnav a')];
