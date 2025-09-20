@@ -5,28 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>佐々木美玲（みーぱん）- 紹介・ディスコグラフィ・タイムライン</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#f9fafc; --card:#fff; --ink:#2d2d2d; --muted:#6b7280;
+    :root{ --bg:#f9fafc; --card:#fff; --ink:#2d2d2d; --muted:#6b7280;
       --brand:#e91e63; --brand-weak:#fde7ef; --ring:rgba(233,30,99,.25);
-      --shadow:0 8px 24px rgba(0,0,0,.08); --radius:14px; --line:#0001;
-    }
+      --shadow:0 8px 24px rgba(0,0,0,.08); --radius:14px; --line:#0001;}
     @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#0b0c10; --card:#121317; --ink:#e7e9ee; --muted:#a3a9b6;
+      :root{ --bg:#0b0c10; --card:#121317; --ink:#e7e9ee; --muted:#a3a9b6;
         --brand:#ff5c93; --brand-weak:#2a0f19; --ring:rgba(255,92,147,.3);
-        --shadow:0 10px 30px rgba(0,0,0,.45); --line:#fff1;
-      }
+        --shadow:0 10px 30px rgba(0,0,0,.45); --line:#fff1;}
     }
     *{box-sizing:border-box}
-    body{
-      font-family:"M PLUS Rounded 1c","Noto Sans JP",system-ui,sans-serif;
+    body{font-family:"M PLUS Rounded 1c","Noto Sans JP",system-ui,sans-serif;
       background: radial-gradient(1200px 600px at 10% -10%, #ffffff80, transparent), var(--bg);
-      margin:0; padding:24px; color:var(--ink); line-height:1.72;
-    }
+      margin:0; padding:24px; color:var(--ink); line-height:1.72;}
     .container{max-width:920px; margin:0 auto; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);}
     header{padding:28px 28px 18px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
     .dot{width:10px; height:10px; border-radius:999px; background:var(--brand); box-shadow:0 0 0 6px var(--brand-weak);}
@@ -34,14 +27,11 @@
     .subtitle{margin:0; color:var(--muted); font-size:15px; font-weight:500;}
 
     nav[aria-label="外部リンク"]{margin-left:auto; display:flex; gap:12px; align-items:center;}
-    .sns-icon{ width:48px; height:48px; display:block; border-radius:12px; transition: transform .2s ease; }
-    .sns-icon:hover{ transform: scale(1.12); }
+    .sns-icon{ width:48px; height:48px; display:block; border-radius:12px; transition:transform .2s ease;}
+    .sns-icon:hover{ transform:scale(1.12); }
     .sns-link{ display:inline-flex; padding:4px; border-radius:12px; border:1px solid var(--line); background:var(--card); }
-    .link-btn{
-      display:inline-flex; align-items:center; gap:.4em; padding:.6em 1em;
-      border-radius:10px; border:1px solid var(--brand); color:var(--brand);
-      text-decoration:none; font-size:15px; font-weight:600;
-    }
+    .link-btn{ display:inline-flex; align-items:center; gap:.4em; padding:.6em 1em;
+      border-radius:10px; border:1px solid var(--brand); color:var(--brand); text-decoration:none; font-size:15px; font-weight:600;}
     .link-btn:hover{ box-shadow:0 0 0 6px var(--ring) inset; }
 
     main{padding:24px;}
@@ -54,14 +44,12 @@
     h2{font-size:22px; margin:40px 0 20px; padding-left:14px; border-left:5px solid var(--brand); color:var(--ink); font-weight:700;}
 
     .grid{display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
-    .single-card{
-      background:var(--card); border-radius:12px; padding:14px; border:1px solid var(--line);
-      box-shadow:0 4px 12px rgba(0,0,0,.08); text-align:center; transition:transform .2s, box-shadow .2s;
-    }
-    .single-card:hover{ transform:translateY(-4px); box-shadow:0 8px 18px rgba(0,0,0,.12); }
-    .single-img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:10px; margin-bottom:10px; }
-    .single-card h3{ font-size:16px; margin:6px 0; color:var(--brand); }
-    .single-card p{ font-size:14px; margin:2px 0; color:var(--ink); }
+    .single-card{ background:var(--card); border-radius:12px; padding:14px; border:1px solid var(--line);
+      box-shadow:0 4px 12px rgba(0,0,0,.08); text-align:center; transition:transform .2s, box-shadow .2s;}
+    .single-card:hover{ transform:translateY(-4px); box-shadow:0 8px 18px rgba(0,0,0,.12);}
+    .single-img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:10px; margin-bottom:10px;}
+    .single-card h3{ font-size:16px; margin:6px 0; color:var(--brand);}
+    .single-card p{ font-size:14px; margin:2px 0; color:var(--ink);}
 
     .timeline{position:relative; margin-left:6px;}
     .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:#00000015;}
@@ -115,46 +103,45 @@
         </div>
       </div>
 
-      <!-- シングル一覧 -->
+      <!-- シングル一覧（1〜13） -->
       <h2 id="singles">シングル一覧</h2>
       <div class="grid">
-        <!-- 1stだけ本物 -->
         <div class="single-card">
           <img src="images/single_1st.jpg" class="single-img" alt="キュン">
           <h3>1st「キュン」</h3>
           <p>2019-03-27</p><p>センター: 小坂菜緒</p>
         </div>
-        <!-- 2nd以降はプレースホルダー -->
         <div class="single-card">
-          <img src="https://via.placeholder.com/300x300?text=2nd+ドレミソラシド" class="single-img" alt="ドレミソラシド">
+          <img src="images/single_2nd.jpg" class="single-img" alt="ドレミソラシド">
           <h3>2nd「ドレミソラシド」</h3>
           <p>2019-07-17</p><p>センター: 小坂菜緒</p>
         </div>
         <div class="single-card">
-          <img src="https://via.placeholder.com/300x300?text=3rd+こん好き" class="single-img" alt="こんなに好きになっちゃっていいの？">
+          <img src="images/single_3rd.jpg" class="single-img" alt="こんなに好きになっちゃっていいの？">
           <h3>3rd「こんなに好きになっちゃっていいの？」</h3>
           <p>2019-10-02</p><p>センター: 小坂菜緒</p>
         </div>
         <div class="single-card">
-          <img src="https://via.placeholder.com/300x300?text=4th+ソンナコトナイヨ" class="single-img" alt="ソンナコトナイヨ">
+          <img src="images/single_4th.jpg" class="single-img" alt="ソンナコトナイヨ">
           <h3>4th「ソンナコトナイヨ」</h3>
           <p>2020-02-19</p><p>センター: 小坂菜緒</p>
         </div>
         <div class="single-card">
-          <img src="https://via.placeholder.com/300x300?text=5th+君しか勝たん" class="single-img" alt="君しか勝たん">
+          <img src="images/single_5th.jpg" class="single-img" alt="君しか勝たん">
           <h3>5th「君しか勝たん」</h3>
           <p>2021-05-26</p><p>センター: 加藤史帆</p>
         </div>
         <div class="single-card">
-          <img src="https://via.placeholder.com/300x300?text=6th+ってか" class="single-img" alt="ってか">
+          <img src="images/single_6th.jpg" class="single-img" alt="ってか">
           <h3>6th「ってか」</h3>
           <p>2021-10-27</p><p>センター: 金村美玖</p>
         </div>
         <div class="single-card">
-          <img src="https://via.placeholder.com/300x300?text=7th+僕なんか" class="single-img" alt="僕なんか">
+          <img src="images/single_7th.jpg" class="single-img" alt="僕なんか">
           <h3>7th「僕なんか」</h3>
           <p>2022-06-01</p><p>センター: 小坂菜緒</p>
         </div>
+        <!-- 8〜13はプレースホルダー。画像を用意できたら差し替え -->
         <div class="single-card">
           <img src="https://via.placeholder.com/300x300?text=8th+月と星が踊るMidnight" class="single-img" alt="月と星が踊るMidnight">
           <h3>8th「月と星が踊るMidnight」</h3>
@@ -187,28 +174,25 @@
         </div>
       </div>
 
-      <!-- アルバム一覧 -->
+      <!-- アルバム一覧（センター情報追記） -->
       <h2 id="albums">アルバム一覧</h2>
       <div class="grid">
         <div class="single-card">
           <img src="https://via.placeholder.com/300x300?text=走り出す瞬間" class="single-img" alt="走り出す瞬間">
           <h3>1stアルバム「走り出す瞬間」</h3>
-          <p>2018-06-20</p>
-          <p>名義: けやき坂46</p>
+          <p>2018-06-20</p><p>名義: けやき坂46</p>
           <p>センター: 佐々木美玲</p>
         </div>
         <div class="single-card">
           <img src="https://via.placeholder.com/300x300?text=ひなたざか" class="single-img" alt="ひなたざか">
           <h3>1stアルバム「ひなたざか」</h3>
-          <p>2020-09-23</p>
-          <p>名義: 日向坂46</p>
+          <p>2020-09-23</p><p>名義: 日向坂46</p>
           <p>センター: 佐々木美玲</p>
         </div>
         <div class="single-card">
           <img src="https://via.placeholder.com/300x300?text=脈打つ感情" class="single-img" alt="脈打つ感情">
           <h3>2ndアルバム「脈打つ感情」</h3>
-          <p>2023-12-20</p>
-          <p>名義: 日向坂46</p>
+          <p>2023-12-20</p><p>名義: 日向坂46</p>
           <p>センター: 佐々木久美</p>
         </div>
       </div>
@@ -225,4 +209,8 @@
 
     <footer>
       <p>※このページは有志による非公式ファンページです。記載の情報・画像等の権利は各権利者に帰属します。</p>
-    </footer
+    </footer>
+  </div>
+  <a href="#top" class="top-btn">▲ Top</a>
+</body>
+</html>
