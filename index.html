@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>佐々木美玲（みーぱん）- 紹介・楽曲・タイムライン</title>
+  <title>佐々木美玲（みーぱん）- 紹介・シングル・タイムライン</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -33,29 +33,17 @@
     .title{font-size:clamp(22px,2vw+12px,30px); margin:0; font-weight:700; letter-spacing:1px;}
     .subtitle{margin:0; color:var(--muted); font-size:15px; font-weight:500;}
 
-    /* 外部リンクナビ */
+    /* 右上ナビ（Instagramアイコン＋FC） */
     nav[aria-label="外部リンク"]{margin-left:auto; display:flex; gap:12px; align-items:center;}
-    .sns-icon{
-      width:48px; height:48px; /* アイコンを大きく */
-      display:block;
-      border-radius:12px;
-      transition: transform .2s ease;
-    }
-    .sns-icon:hover{transform: scale(1.12);} /* ホバー時少し拡大 */
-    .sns-link{
-      display:inline-flex;
-      padding:4px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:var(--card);
-    }
+    .sns-icon{ width:48px; height:48px; display:block; border-radius:12px; transition: transform .2s ease; }
+    .sns-icon:hover{ transform: scale(1.12); }
+    .sns-link{ display:inline-flex; padding:4px; border-radius:12px; border:1px solid var(--line); background:var(--card); }
     .link-btn{
-      display:inline-flex; align-items:center; gap:.4em;
-      padding:.6em 1em;
-      border-radius:10px; border:1px solid var(--brand);
-      color:var(--brand); text-decoration:none; font-size:15px; font-weight:600;
+      display:inline-flex; align-items:center; gap:.4em; padding:.6em 1em;
+      border-radius:10px; border:1px solid var(--brand); color:var(--brand);
+      text-decoration:none; font-size:15px; font-weight:600;
     }
-    .link-btn:hover{box-shadow:0 0 0 6px var(--ring) inset;}
+    .link-btn:hover{ box-shadow:0 0 0 6px var(--ring) inset; }
 
     main{padding:24px;}
     /* Hero */
@@ -67,17 +55,22 @@
 
     h2{font-size:22px; margin:40px 0 20px; padding-left:14px; border-left:5px solid var(--brand); color:var(--ink); font-weight:700;}
 
-    /* Cards */
+    /* カード共通 */
     .grid{display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
-    .card{background:var(--card); border-radius:12px; padding:20px 24px; box-shadow:0 4px 15px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.15); transition:transform .2s, box-shadow .2s;}
-    .card:hover{transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,.15);}
-    .card strong{display:block; margin-bottom:10px; font-size:16px; color:var(--brand);}
-    .card ul{list-style:none; padding:0; margin:0;}
-    .card li{margin:6px 0; padding-left:1.2em; position:relative; font-size:15px; color:#444;}
-    .card li::before{content:"•"; position:absolute; left:0; color:var(--brand);}
-    @media(prefers-color-scheme:dark){.card li{color:#d9dbe2;}}
+    .card{background:var(--card); border-radius:12px; padding:20px 24px; box-shadow:0 4px 15px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.15);}
 
-    /* Timeline */
+    /* シングル（カード型） */
+    .singles{ grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); }
+    .single-card{
+      background:var(--card); border-radius:12px; padding:14px; border:1px solid var(--line);
+      box-shadow:0 4px 12px rgba(0,0,0,.08); text-align:center; transition:transform .2s, box-shadow .2s;
+    }
+    .single-card:hover{ transform:translateY(-4px); box-shadow:0 8px 18px rgba(0,0,0,.12); }
+    .single-img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:10px; margin-bottom:10px; }
+    .single-card h3{ font-size:16px; margin:6px 0; color:var(--brand); }
+    .single-card p{ font-size:14px; margin:2px 0; color:var(--ink); }
+
+    /* タイムライン */
     .timeline{position:relative; margin-left:6px;}
     .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:#00000015;}
     .tl-item{position:relative; padding-left:24px; margin:10px 0 16px}
@@ -85,8 +78,6 @@
     .muted{color:var(--muted); font-size:13px; font-weight:500;}
 
     footer{padding:18px 24px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; text-align:center;}
-    .back{display:inline-block; margin-top:24px; text-decoration:none; color:#1a73e8; font-weight:500;}
-    .back:hover{text-decoration:underline}
     .top-btn{position:fixed; right:14px; bottom:14px; z-index:10; padding:.6em .9em; border-radius:999px; border:1px solid #00000020; background:var(--card); box-shadow:var(--shadow); text-decoration:none; color:var(--ink); font-size:14px; font-weight:500;}
   </style>
 </head>
@@ -99,8 +90,8 @@
         <p class="subtitle">推しメン紹介（非公式ファンページ）</p>
       </div>
       <nav aria-label="外部リンク">
-        <a class="sns-link" href="https://www.instagram.com/mireisasaki_official/?hl=ja" target="_blank" rel="noopener">
-          <img src="images/instagram.png" alt="Instagram" class="sns-icon">
+        <a class="sns-link" href="https://www.instagram.com/mireisasaki_official/?hl=ja" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="images/instagram.png" alt="Instagram" class="sns-icon" width="48" height="48" loading="lazy" decoding="async">
         </a>
         <a class="link-btn" href="https://mireisasaki.officialfc.jp/" target="_blank" rel="noopener">ファンクラブ</a>
       </nav>
@@ -111,14 +102,14 @@
       <section class="hero">
         <img src="images/miipan_main.jpg" alt="佐々木美玲（みーぱん）">
         <div>
-          <p>明るい笑顔と多才さで愛される「みーぱん」。ここでは基本プロフィール・代表曲・楽曲リスト・歩みをまとめています。</p>
+          <p>明るい笑顔と多才さで愛される「みーぱん」。ここでは基本プロフィール・シングル・歩みをまとめています。</p>
           <div class="chips">
             <span class="chip">笑顔</span><span class="chip">やさしさ</span><span class="chip">多才</span>
           </div>
         </div>
       </section>
 
-      <!-- Profile -->
+      <!-- プロフィール（簡略） -->
       <h2 id="profile">プロフィール</h2>
       <div class="grid">
         <div class="card">
@@ -127,13 +118,24 @@
             <li>ニックネーム：みーぱん</li>
             <li>生年月日：1999年12月17日</li>
             <li>出身地：兵庫県</li>
-            <li>血液型：O型</li>
-            <li>身長：164cm</li>
+            <li>血液型：O型 / 身長：164cm</li>
           </ul>
         </div>
       </div>
 
-      <!-- Timeline -->
+      <!-- シングル一覧：まずは 1st「キュン」だけ -->
+      <h2 id="singles">シングル一覧</h2>
+      <div class="grid singles">
+        <div class="single-card">
+          <!-- 今回アップしてくれた画像を使用 -->
+          <img src="images/single_1st.jpg" alt="1stシングル『キュン』関連ショット" class="single-img" loading="lazy" decoding="async">
+          <h3>1stシングル「キュン」</h3>
+          <p>発売日: 2019-03-27</p>
+          <p>センター: 小坂菜緒</p>
+        </div>
+      </div>
+
+      <!-- タイムライン -->
       <h2 id="timeline">タイムライン</h2>
       <div class="timeline">
         <div class="tl-item"><div class="muted">2016</div><div>けやき坂46オーディション合格。</div></div>
