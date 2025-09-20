@@ -5,29 +5,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>佐々木美玲（みーぱん）- 紹介・楽曲・タイムライン</title>
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="佐々木美玲（みーぱん）- 紹介・楽曲・タイムライン">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://example.com/og/miipan_og.jpg">
-  <meta property="og:description" content="みーぱんのプロフィール・代表曲・楽曲データ・歩みをまとめた非公式ファンページ。">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg:#f9fafc; --card:#fff; --ink:#2d2d2d; --muted:#6b7280;
-      --brand:#e91e63; --brand-2:#fca5b2;
-      --brand-weak:#fde7ef; --ring: color-mix(in oklab, var(--brand) 35%, transparent);
+      --brand:#e91e63; --brand-weak:#fde7ef; --ring:rgba(233,30,99,.25);
       --shadow:0 8px 24px rgba(0,0,0,.08); --radius:14px; --line:#0001;
     }
     @media (prefers-color-scheme: dark){
       :root{
         --bg:#0b0c10; --card:#121317; --ink:#e7e9ee; --muted:#a3a9b6;
-        --brand:#ff5c93; --brand-2:#ffb3c7; --brand-weak:#2a0f19; --ring:rgba(255,92,147,.25);
+        --brand:#ff5c93; --brand-weak:#2a0f19; --ring:rgba(255,92,147,.3);
         --shadow:0 10px 30px rgba(0,0,0,.45); --line:#fff1;
       }
     }
@@ -39,37 +29,70 @@
     }
     .container{max-width:920px; margin:0 auto; background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);}
     header{padding:28px 28px 18px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
-    .header-glow{background:radial-gradient(60% 120% at 0% -10%, color-mix(in oklab, var(--brand) 10%, transparent), transparent);}
     .dot{width:10px; height:10px; border-radius:999px; background:var(--brand); box-shadow:0 0 0 6px var(--brand-weak);}
-    .title{font-size:clamp(22px,2vw+12px,30px); margin:0; font-weight:700;}
+    .title{font-size:clamp(22px,2vw+12px,30px); margin:0; font-weight:700; letter-spacing:1px;}
     .subtitle{margin:0; color:var(--muted); font-size:15px; font-weight:500;}
-    nav[aria-label="外部リンク"]{margin-left:auto; display:flex; gap:10px; align-items:center;}
-    .sns-icon{width:28px; height:28px; display:block; border-radius:6px; transition: transform .2s ease;}
-    .sns-icon:hover{transform: scale(1.08);}
-    .sns-link{display:inline-flex; padding:6px; border-radius:10px; border:1px solid var(--line);}
-    .link-btn{display:inline-flex; align-items:center; gap:.4em; padding:.5em .8em; border-radius:10px; border:1px solid var(--brand); color:var(--brand); text-decoration:none; font-size:14px; font-weight:500;}
-    main{padding:24px; max-width:70ch; margin-inline:auto;}
-    .hero{display:grid; grid-template-columns:180px 1fr; gap:18px; padding:14px; border-radius:12px; background:linear-gradient(135deg, var(--brand-weak), transparent 60%); border:1px solid var(--line);}
-    .hero img{width:100%; height:180px; object-fit:cover; border-radius:12px; border:1px solid var(--line);}
+
+    /* 外部リンクナビ */
+    nav[aria-label="外部リンク"]{margin-left:auto; display:flex; gap:12px; align-items:center;}
+    .sns-icon{
+      width:48px; height:48px; /* アイコンを大きく */
+      display:block;
+      border-radius:12px;
+      transition: transform .2s ease;
+    }
+    .sns-icon:hover{transform: scale(1.12);} /* ホバー時少し拡大 */
+    .sns-link{
+      display:inline-flex;
+      padding:4px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:var(--card);
+    }
+    .link-btn{
+      display:inline-flex; align-items:center; gap:.4em;
+      padding:.6em 1em;
+      border-radius:10px; border:1px solid var(--brand);
+      color:var(--brand); text-decoration:none; font-size:15px; font-weight:600;
+    }
+    .link-btn:hover{box-shadow:0 0 0 6px var(--ring) inset;}
+
+    main{padding:24px;}
+    /* Hero */
+    .hero{display:grid; grid-template-columns:220px 1fr; gap:20px; padding:14px; border-radius:12px; background:linear-gradient(135deg, var(--brand-weak), transparent 60%); border:1px solid var(--line);}
+    .hero img{width:100%; height:220px; object-fit:cover; border-radius:12px; border:1px solid var(--line);}
     .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px}
-    .chip{padding:.25em .6em; border-radius:999px; font-size:12px; background:var(--brand-weak);}
-    h2{font-size:22px; margin:40px 0 20px; padding-left:14px; border-left:5px solid var(--brand);}
+    .chip{padding:.25em .6em; border-radius:999px; font-size:12px; background:#00000008; border:1px solid var(--line);}
+    @media(max-width:720px){.hero{grid-template-columns:1fr}.hero img{height:240px}}
+
+    h2{font-size:22px; margin:40px 0 20px; padding-left:14px; border-left:5px solid var(--brand); color:var(--ink); font-weight:700;}
+
+    /* Cards */
     .grid{display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
-    .card{background:var(--card); border-radius:12px; padding:20px 24px; box-shadow:0 6px 22px rgba(0,0,0,.08);}
-    .featured-card{display:flex; gap:14px; border:1px solid var(--line); border-radius:12px; padding:16px 18px;}
-    .cover{aspect-ratio: 1.6 / 1; border-radius:10px; overflow:hidden; border:1px solid var(--line); background: var(--brand-weak); width:42%;}
-    .cover img{width:100%; height:100%; object-fit:cover;}
+    .card{background:var(--card); border-radius:12px; padding:20px 24px; box-shadow:0 4px 15px rgba(0,0,0,.08); border:1px solid rgba(233,30,99,.15); transition:transform .2s, box-shadow .2s;}
+    .card:hover{transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,.15);}
+    .card strong{display:block; margin-bottom:10px; font-size:16px; color:var(--brand);}
+    .card ul{list-style:none; padding:0; margin:0;}
+    .card li{margin:6px 0; padding-left:1.2em; position:relative; font-size:15px; color:#444;}
+    .card li::before{content:"•"; position:absolute; left:0; color:var(--brand);}
+    @media(prefers-color-scheme:dark){.card li{color:#d9dbe2;}}
+
+    /* Timeline */
     .timeline{position:relative; margin-left:6px;}
-    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:#0001;}
+    .timeline::before{content:""; position:absolute; left:8px; top:0; bottom:0; width:2px; background:#00000015;}
     .tl-item{position:relative; padding-left:24px; margin:10px 0 16px}
-    .tl-item::before{content:""; position:absolute; left:2px; top:.45em; width:12px; height:12px; border-radius:999px; background:var(--brand);}
+    .tl-item::before{content:""; position:absolute; left:2px; top:.45em; width:12px; height:12px; border-radius:999px; background:var(--brand); box-shadow:0 0 0 6px var(--brand-weak);}
+    .muted{color:var(--muted); font-size:13px; font-weight:500;}
+
     footer{padding:18px 24px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; text-align:center;}
-    .top-btn{position:fixed; right:14px; bottom:14px; z-index:10; padding:.6em .9em; border-radius:999px; border:1px solid #0002; background:var(--card); text-decoration:none;}
+    .back{display:inline-block; margin-top:24px; text-decoration:none; color:#1a73e8; font-weight:500;}
+    .back:hover{text-decoration:underline}
+    .top-btn{position:fixed; right:14px; bottom:14px; z-index:10; padding:.6em .9em; border-radius:999px; border:1px solid #00000020; background:var(--card); box-shadow:var(--shadow); text-decoration:none; color:var(--ink); font-size:14px; font-weight:500;}
   </style>
 </head>
 <body>
   <div class="container">
-    <header class="header-glow">
+    <header>
       <span class="dot"></span>
       <div>
         <h1 class="title">佐々木美玲（ささき みれい）</h1>
@@ -86,7 +109,6 @@
     <main id="top">
       <!-- Hero -->
       <section class="hero">
-        <!-- アップロードしてくれた画像をここに -->
         <img src="images/miipan_main.jpg" alt="佐々木美玲（みーぱん）">
         <div>
           <p>明るい笑顔と多才さで愛される「みーぱん」。ここでは基本プロフィール・代表曲・楽曲リスト・歩みをまとめています。</p>
@@ -111,10 +133,6 @@
         </div>
       </div>
 
-      <!-- Featured -->
-      <h2 id="featured">代表曲</h2>
-      <div id="featuredWrap" class="grid"></div>
-
       <!-- Timeline -->
       <h2 id="timeline">タイムライン</h2>
       <div class="timeline">
@@ -126,7 +144,7 @@
     </main>
 
     <footer>
-      <p>※このページは非公式ファンページです。</p>
+      <p>※このページは有志による非公式ファンページです。記載の情報・画像等の権利は各権利者に帰属します。</p>
     </footer>
   </div>
 
